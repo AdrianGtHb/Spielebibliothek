@@ -82,7 +82,10 @@ void showGame()
 		{
 			for (int k = 0; k < 54; k++)
 			{
-				printf("%c", Feld1[i][k]);
+				if (Feld1[i][k] == '#')
+					printf("%c", 254);
+				else
+					printf("%c", Feld1[i][k]);
 			}
 			printf("\n");
 		}
@@ -93,7 +96,10 @@ void showGame()
 		{
 			for (int k = 0; k < 54; k++)
 			{
-				printf("%c", Feld2[i][k]);
+				if (Feld2[i][k] == '#')
+					printf("%c", 254);
+				else
+					printf("%c", Feld2[i][k]);
 			}
 			printf("\n");
 		}
