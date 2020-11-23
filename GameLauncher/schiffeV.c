@@ -145,7 +145,7 @@ void shipinput()
 			system("cls");
 			showGame();
 			printf("\n1)Schlachtschiff, 5 K\x084stchen (x%d)\n2)Kreuzer, 4 K\x084stchen (x%d)\n3)Zerst\x094rer, 3 K\x084stchen (x%d)\n4)U-Boot, 2 K\x084stchen (x%d)\n", Schiffe[gamePlayer][0], Schiffe[gamePlayer][1], Schiffe[gamePlayer][2], Schiffe[gamePlayer][3]);
-			printf("W\x084hlen Sie ein Schiff, dass Sie stationieren m\x094chten!\nEingabe: ");
+			printf("W\x084hlen Sie ein Schiff, dass Sie stationieren m\x094\chten!\nEingabe: ");
 			scanf("%d%c", &input, &puffer);
 			if (Schiffe[gamePlayer][input - 1] == 0)
 			{
@@ -270,7 +270,7 @@ void shipinput()
 			}
 			else if (nogo != 0)
 			{
-				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben m\x081\x0e1en und keine anderen Schiffe ber\x081hren d\x081rfen!\n<ENTER> dr\x081cken um fortzufahren");
+				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben m\x081ssen und keine anderen Schiffe ber\x081hren d\x081rfen!\n<ENTER> dr\x081\cken um fortzufahren");
 				getchar();
 			}
 		}
@@ -335,7 +335,7 @@ void shipinput()
 			}
 			else if (nogo != 0)
 			{
-				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben m\x081\x0e1en und keine anderen Schiffe ber\x081hren d\x081rfen!\n<ENTER> dr\x081cken um fortzufahren");
+				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben m\x081\en und keine anderen Schiffe ber\x081hren d\x081rfen!\n<ENTER> dr\x081\cken um fortzufahren");
 				getchar();
 			}
 		}
