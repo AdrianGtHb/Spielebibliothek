@@ -144,12 +144,12 @@ void shipinput()
 		{
 			system("cls");
 			showGame();
-			printf("\n1)Schlachtschiff, 5 Kaestchen (x%d)\n2)Kreuzer, 4 Kaestchen (x%d)\n3)Zerstoerer, 3 Kaestchen (x%d)\n4)U-Boot, 2 Kaestchen (x%d)\n", Schiffe[gamePlayer][0], Schiffe[gamePlayer][1], Schiffe[gamePlayer][2], Schiffe[gamePlayer][3]);
-			printf("Waehlen Sie ein Schiff, dass Sie stationieren moechten!\nEingabe: ");
+			printf("\n1)Schlachtschiff, 5 K\x084stchen (x%d)\n2)Kreuzer, 4 K\x084stchen (x%d)\n3)Zerst\x094rer, 3 K\x084stchen (x%d)\n4)U-Boot, 2 K\x084stchen (x%d)\n", Schiffe[gamePlayer][0], Schiffe[gamePlayer][1], Schiffe[gamePlayer][2], Schiffe[gamePlayer][3]);
+			printf("W\x084hlen Sie ein Schiff, dass Sie stationieren m\x094chten!\nEingabe: ");
 			scanf("%d%c", &input, &puffer);
 			if (Schiffe[gamePlayer][input - 1] == 0)
 			{
-				printf("\nAchtung! Von dieser Art Schiff haben Sie keins mehr! Waehlen sie ein anderes!<ENTER>");
+				printf("\nAchtung! Von dieser Art Schiff haben Sie keins mehr! W\x084hlen sie ein anderes!<ENTER>");
 				getchar();
 			}
 			else if (Schiffe[gamePlayer][input - 1] > 0)
@@ -159,11 +159,11 @@ void shipinput()
 		}
 		system("cls");
 		showGame();
-		printf("\nGeben Sie den gewuenschten Breitengrad ein!\nEingabe: ");
+		printf("\nGeben Sie den gew\x081nschten Breitengrad ein!\nEingabe: ");
 		scanf("%d%c", &breite, &puffer);
 		system("cls");
 		showGame();
-		printf("\nGeben Sie den gewuenschten Laengengrad ein!\nEingabe: ");
+		printf("\nGeben Sie den gew\x081nschten L\x084ngengrad ein!\nEingabe: ");
 		scanf("%c%c", &c_laenge, &puffer);
 		system("cls");
 		showGame();
@@ -270,7 +270,7 @@ void shipinput()
 			}
 			else if (nogo != 0)
 			{
-				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben muessen und keine anderen Schiffe beruehren duerfen!\n<ENTER> druecken um fortzufahren");
+				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben m\x081\x0e1en und keine anderen Schiffe ber\x081hren d\x081rfen!\n<ENTER> dr\x081cken um fortzufahren");
 				getchar();
 			}
 		}
@@ -335,7 +335,7 @@ void shipinput()
 			}
 			else if (nogo != 0)
 			{
-				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben muessen und keine anderen Schiffe beruehren duerfen!\n<ENTER> druecken um fortzufahren");
+				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben m\x081\x0e1en und keine anderen Schiffe ber\x081hren d\x081rfen!\n<ENTER> dr\x081cken um fortzufahren");
 				getchar();
 			}
 		}
@@ -388,7 +388,7 @@ void schuss()
 		scanf("%d%c", &sBreite, &puffer);
 		system("cls");
 		showGame();
-		printf("\nSpieler %d, geben Sie den Laengengrad zum Beschuss an!\nEingabe: ", gamePlayer + 1);
+		printf("\nSpieler %d, geben Sie den L\x084ngengrad zum Beschuss an!\nEingabe: ", gamePlayer + 1);
 		scanf("%c%c", &c_sLaenge, &puffer);
 		if (c_sLaenge == 'a' || c_sLaenge == 'A')
 			sLaenge = 0;
@@ -468,13 +468,13 @@ void schuss()
 				system("cls");
 				showGame();
 				if (countersize == 5)
-					printf("\nSie haben das gegnerische Schlachtschiff zerstoert! Weiter so!\n");
+					printf("\nSie haben das gegnerische Schlachtschiff zerst\x094rt! Weiter so!\n");
 				if (countersize == 4)
-					printf("\nSie haben einen gegnerischen Kreuzer zerstoert! Gute Arbeit!\n");
+					printf("\nSie haben einen gegnerischen Kreuzer zerst\x094rt! Gute Arbeit!\n");
 				if (countersize == 3)
-					printf("\nSie haben einen gegnerischen Zerstoerer demoliert! Sehr gut!\n");
+					printf("\nSie haben einen gegnerischen Zerst\x094rer demoliert! Sehr gut!\n");
 				if (countersize == 2)
-					printf("\nSie haben ein gegnerisches U-Boot zerstoert! Sehr schoen!\n");
+					printf("\nSie haben ein gegnerisches U-Boot zerst\x094rt! Sehr sch\x094n!\n");
 				printf("\nTreffer bei %d/%c <ENTER>", sBreite, c_sLaenge);
 				getchar();
 				fehlversuch++;
@@ -569,13 +569,13 @@ void schuss()
 				system("cls");
 				showGame();
 				if (countersize == 5)
-					printf("\nSie haben das gegnerische Schlachtschiff zerstoert! Weiter so!\n");
+					printf("\nSie haben das gegnerische Schlachtschiff zerst\x094rt! Weiter so!\n");
 				if (countersize == 4)
-					printf("\nSie haben einen gegnerischen Kreuzer zerstoert! Gute Arbeit!\n");
+					printf("\nSie haben einen gegnerischen Kreuzer zerst\x094rt! Gute Arbeit!\n");
 				if (countersize == 3)
-					printf("\nSie haben einen gegnerischen Zerstoerer demoliert! Sehr gut!\n");
+					printf("\nSie haben einen gegnerischen Zerst\x094rer demoliert! Sehr gut!\n");
 				if (countersize == 2)
-					printf("\nSie haben ein gegnerisches U-Boot zerstoert! Sehr schoen!\n");
+					printf("\nSie haben ein gegnerisches U-Boot zerst\x094rt! Sehr sch\x094n!\n");
 				printf("\nTreffer bei %d/%c! Spielerwechsel... <ENTER>", sBreite, c_sLaenge);
 				getchar();
 				fehlversuch++;
