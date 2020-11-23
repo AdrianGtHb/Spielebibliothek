@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #pragma warning (disable : 4996)
-
+#define RED     "\x1b[31m"
+#define GREEN   "\x1b[32m"
+#define YELLOW  "\x1b[33m"
+#define BLUE    "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN    "\x1b[36m"
+#define RESETCOLOUR   "\x1b[0m"
 char disp[7][18];
 char puffer;
 int count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0;
@@ -44,7 +50,20 @@ void anzeigen()
 	{
 		for (int k = 0; k < 16; k++)
 		{
-			printf("%c", disp[i][k]);
+			if (disp[i][k] == 'X') {
+				printf(CYAN);
+				printf("0");
+				printf(RESETCOLOUR);
+			}
+			if (disp[i][k] == '0') {
+				printf(YELLOW);
+				printf("%c", disp[i][k]);
+				printf(RESETCOLOUR);
+			}
+			if(disp[i][k] != '0' && disp[i][k] != 'X'){
+				printf("%c", disp[i][k]);
+			}
+			//printf("%c", disp[i][k]);
 		}
 		printf("\n");
 	}
@@ -58,14 +77,17 @@ int eingabe()
 	if (flipper % 2 == 0)
 	{
 		player = 2;
+
 		coin = 'X';
-		printf("\n%s, Sie sind an der Reihe.[%c]", p2, coin);
+		printf(CYAN	"\n%s, Sie sind an der Reihe.", p2);
+		printf(RESETCOLOUR);
 	}
 	else
 	{
 		player = 1;
 		coin = '0';
-		printf("\n%s, Sie sind an der Reihe.[%c]", p1, coin);
+		printf(YELLOW	"\n%s, Sie sind an der Reihe.", p1);
+		printf(RESETCOLOUR);
 	}
 
 	while (z == 0)
@@ -77,7 +99,7 @@ int eingabe()
 		case 1:
 			if (count1 == 6)
 			{
-				printf("Bitte eine Reihe mit freien Plaetzen waehlen.");
+				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -87,7 +109,7 @@ int eingabe()
 		case 2:
 			if (count2 == 6)
 			{
-				printf("Bitte eine Reihe mit freien Plaetzen waehlen.");
+				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -97,7 +119,7 @@ int eingabe()
 		case 3:
 			if (count3 == 6)
 			{
-				printf("Bitte eine Reihe mit freien Plaetzen waehlen.");
+				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -107,7 +129,7 @@ int eingabe()
 		case 4:
 			if (count4 == 6)
 			{
-				printf("Bitte eine Reihe mit freien Plaetzen waehlen.");
+				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -117,7 +139,7 @@ int eingabe()
 		case 5:
 			if (count5 == 6)
 			{
-				printf("Bitte eine Reihe mit freien Plaetzen waehlen.");
+				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -127,7 +149,7 @@ int eingabe()
 		case 6:
 			if (count6 == 6)
 			{
-				printf("Bitte eine Reihe mit freien Plaetzen waehlen.");
+				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -137,7 +159,7 @@ int eingabe()
 		case 7:
 			if (count7 == 6)
 			{
-				printf("Bitte eine Reihe mit freien Plaetzen waehlen.");
+				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -302,6 +324,19 @@ void gameVierGewinnt()
 	int auswahl = 0;
 	int score1 = 0;
 	int score2 = 0;
+
+  //printf("    .----------------.    .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .-----------------. .----------------.		\n");
+  //printf("   | .--------------. |  | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |	\n");
+  //printf("   | |   _    _     | |  | |    ______    | || |  _________   | || | _____  _____ | || |     _____    | || | ____  _____  | || | ____  _____  | || |  _________   | |	\n");
+  //printf("   | |  | |  | |    | |  | |  .' ___  |   | || | |_   ___  |  | || ||_   _||_   _|| || |    |_   _|   | || ||_   \|_   _| | || ||_   \|_   _| | || | |  _   _  |  | |	\n");
+  //printf("   | |  | |__| |_   | |  | | / .'   \_|  | || |   | |_  \_|  | || |  | | /\ | |  | || |      | |     | || |  |   \ | |   | || |  |   \ | |   | || | |_/ | | \_|  | |	\n");
+  //printf("   | |  |____   _|  | |  | | | |    ____  | || |   |  _|  _   | || |  | |/  \| |  | || |      | |     | || |  | |\ \| |   | || |  | |\ \| |   | || |     | |      | |	\n");
+  //printf("   | |      _| |_   | |  | | \ `.___]  _| | || |  _| |___/ |  | || |  |   /\   |  | || |     _| |_    | || | _| |_\   |_  | || | _| |_\   |_  | || |    _| |_     | |	\n");
+  //printf("   | |     |_____|  | |  | |  `._____.'   | || | |_________|  | || |  |__/  \__|  | || |    |_____|   | || ||_____|\____| | || ||_____|\____| | || |   |_____|    | |	\n");
+  //printf("   | |              | |  | |              | || |              | || |              | || |              | || |              | || |              | || |              | |	\n");
+  //printf("   | '--------------' |  | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |	\n");
+  //printf("    '----------------'    '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'		\n");
+ 
 	printf("-------------------------------------------\n   4 Gewinnt\n-------------------------------------------\n\n1)Spielen\n2)Beenden\n");
 	scanf("%d%c", &auswahl, &puffer);
 
@@ -326,7 +361,11 @@ void gameVierGewinnt()
 			while (x == 0 && c == 0)
 			{
 				system("cls");
-				printf("-------------------------------------------\n   4 Gewinnt\tScore: %s[%d] %s[%d]\n-------------------------------------------\n\n", p1, score1, p2, score2);
+				printf("-------------------------------------------\n   4 Gewinnt\tScore: ");
+				printf(YELLOW	"%s[%d] ", p1, score1);
+				printf(CYAN	"%s[%d]",p2, score2);
+				printf(RESETCOLOUR);
+				printf("\n-------------------------------------------\n\n");
 				anzeigen();
 				int input = eingabe();
 				change(input);
@@ -335,18 +374,24 @@ void gameVierGewinnt()
 				tries++;
 			}
 			system("cls");
-			printf("-------------------------------------------\n   4 Gewinnt\tScore: %s[%d] %s[%d]\n-------------------------------------------\n\n", p1, score1, p2, score2);
+			printf("-------------------------------------------\n   4 Gewinnt\tScore: ");
+			printf(YELLOW	"%s[%d] ", p1, score1);
+			printf(CYAN	"%s[%d]", p2, score2);
+			printf(RESETCOLOUR);
+			printf("\n-------------------------------------------\n\n");
 			anzeigen();
 			if (x >= 1)
 			{
 				if (player == 1)
 				{
-					printf("\n%s hat nach %d Zuegen gewonnen![%c]", p1, tries, coin);
+					printf(YELLOW	"\n%s hat nach %d Zuegen gewonnen![%c]", p1, tries, coin);
+					printf(RESETCOLOUR);
 					score1++;
 				}
 				else if (player == 2)
 				{
-					printf("\n%s hat nach %d Zuegen gewonnen![%c]", p2, tries, coin);
+					printf(CYAN		"\n%s hat nach %d Zuegen gewonnen![%c]", p2, tries, coin);
+					printf(RESETCOLOUR);
 					score2++;
 				}
 			}
