@@ -9,6 +9,7 @@ int gamePlayer = 0;
 int beenden = 0;
 char puffer;
 
+
 #define RED     "\x1b[31m"
 #define YELLOW  "\x1b[33m"
 #define RESETCOLOUR   "\x1b[0m"
@@ -80,6 +81,8 @@ void createGame()
 
 void showGame()
 {
+	print_image("shipimage.txt");
+	printf("\n\n");
 	if (gamePlayer == 0)
 	{
 		for (int i = 0; i < 14; i++)
@@ -181,7 +184,9 @@ void shipinput()
 			scanf("%d%c", &input, &puffer);
 			if (Schiffe[gamePlayer][input - 1] == 0)
 			{
+				printf(RED);
 				printf("\nAchtung! Von dieser Art Schiff haben Sie keins mehr! W\x084hlen sie ein anderes!<ENTER>");
+				printf(RESETCOLOUR);
 				getchar();
 			}
 			else if (Schiffe[gamePlayer][input - 1] > 0)
@@ -302,7 +307,9 @@ void shipinput()
 			}
 			else if (nogo != 0)
 			{
+				printf(RED);
 				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben m\x081ssen und keine anderen Schiffe ber\x081hren d\x081rfen!\n<ENTER> dr\x081\cken um fortzufahren");
+				printf(RESETCOLOUR);
 				getchar();
 			}
 		}
@@ -367,7 +374,9 @@ void shipinput()
 			}
 			else if (nogo != 0)
 			{
+				printf(RED);
 				printf("\nBitte beachten Sie, dass Schiffe auf dem Spielfeld Platz haben m\x081\en und keine anderen Schiffe ber\x081hren d\x081rfen!\n<ENTER> dr\x081\cken um fortzufahren");
+				printf(RESETCOLOUR);
 				getchar();
 			}
 		}
@@ -499,6 +508,7 @@ void schuss()
 
 				system("cls");
 				showGame();
+				printf(YELLOW);
 				if (countersize == 5)
 					printf("\nSie haben das gegnerische Schlachtschiff zerst\x094rt! Weiter so!\n");
 				if (countersize == 4)
@@ -508,6 +518,7 @@ void schuss()
 				if (countersize == 2)
 					printf("\nSie haben ein gegnerisches U-Boot zerst\x094rt! Sehr sch\x094n!\n");
 				printf("\nTreffer bei %d/%c <ENTER>", sBreite, c_sLaenge);
+				printf(RESETCOLOUR);
 				getchar();
 				fehlversuch++;
 			}
@@ -517,7 +528,9 @@ void schuss()
 				Feld2[sLaenge + 3][(sBreite * 2) + 2] = 'O';
 				system("cls");
 				showGame();
+				printf(YELLOW);
 				printf("\nDer ging ins Leere! Bei %d/%c <ENTER>", sBreite, c_sLaenge);
+				printf(RESETCOLOUR);
 				getchar();
 				fehlversuch++;
 			}
@@ -525,21 +538,27 @@ void schuss()
 			{
 				system("cls");
 				showGame();
+				printf(RED);
 				printf("\nSie haben doch schon bei %d/%c getroffen! Versuchen Sie es nochmal!<ENTER>", sBreite, c_sLaenge);
+				printf(RESETCOLOUR);
 				getchar();
 			}
 			else if (Feld2[sLaenge + 3][(sBreite * 2) + 2] == 'O')
 			{
 				system("cls");
 				showGame();
+				printf(RED);
 				printf("\nDas haben wir doch schon probiert! Bei %d/%c war nichts! Versuchen Sie es nochmal!<ENTER>", sBreite, c_sLaenge);
+				printf(RESETCOLOUR);
 				getchar();
 			}
 			else
 			{
 				system("cls");
 				showGame();
+				printf(RED);
 				printf("\nBitte in den markierten Bereich schieﬂen!<ENTER>");
+				printf(RESETCOLOUR);
 				getchar();
 			}
 		}
@@ -600,6 +619,7 @@ void schuss()
 
 				system("cls");
 				showGame();
+				printf(YELLOW);
 				if (countersize == 5)
 					printf("\nSie haben das gegnerische Schlachtschiff zerst\x094rt! Weiter so!\n");
 				if (countersize == 4)
@@ -609,6 +629,7 @@ void schuss()
 				if (countersize == 2)
 					printf("\nSie haben ein gegnerisches U-Boot zerst\x094rt! Sehr sch\x094n!\n");
 				printf("\nTreffer bei %d/%c! Spielerwechsel... <ENTER>", sBreite, c_sLaenge);
+				printf(RESETCOLOUR);
 				getchar();
 				fehlversuch++;
 			}
@@ -618,7 +639,9 @@ void schuss()
 				Feld1[sLaenge + 3][(sBreite * 2) + 2] = 'O';
 				system("cls");
 				showGame();
+				printf(YELLOW);
 				printf("\nDer ging ins Leere! Bei %d/%c! Spielerwechsel... <ENTER>", sBreite, c_sLaenge);
+				printf(RESETCOLOUR);
 				getchar();
 				fehlversuch++;
 			}
@@ -626,21 +649,27 @@ void schuss()
 			{
 				system("cls");
 				showGame();
+				printf(RED);
 				printf("\nSie haben doch schon bei %d/%c getroffen! Versuchen Sie es nochmal! <ENTER>", sBreite, c_sLaenge);
+				printf(RESETCOLOUR);
 				getchar();
 			}
 			else if (Feld1[sLaenge + 3][(sBreite * 2) + 2] == 'O')
 			{
 				system("cls");
 				showGame();
+				printf(RED);
 				printf("\nDas haben wir doch schon probiert! Bei %d/%c war nichts! Versuchen Sie es nochmal! <ENTER>", sBreite, c_sLaenge);
+				printf(RESETCOLOUR);
 				getchar();
 			}
 			else
 			{
 				system("cls");
 				showGame();
+				printf(RED);
 				printf("\nBitte in den markierten Bereich schieﬂen! <ENTER>");
+				printf(RESETCOLOUR);
 				getchar();
 			}
 		}

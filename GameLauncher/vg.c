@@ -123,12 +123,12 @@ void anzeigen()
 				printf("0");
 				printf(RESETCOLOUR);
 			}
-			if (disp[i][k] == '0') {
+			else if (disp[i][k] == '0') {
 				printf(YELLOW);
 				printf("%c", disp[i][k]);
 				printf(RESETCOLOUR);
 			}
-			if(disp[i][k] != '0' && disp[i][k] != 'X'){
+			else {
 				printf("%c", disp[i][k]);
 			}
 		}
@@ -167,7 +167,7 @@ int eingabe()
 		case 1:
 			if (count1 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -177,7 +177,7 @@ int eingabe()
 		case 2:
 			if (count2 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -187,7 +187,7 @@ int eingabe()
 		case 3:
 			if (count3 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -197,7 +197,7 @@ int eingabe()
 		case 4:
 			if (count4 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -207,7 +207,7 @@ int eingabe()
 		case 5:
 			if (count5 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -217,7 +217,7 @@ int eingabe()
 		case 6:
 			if (count6 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -227,7 +227,7 @@ int eingabe()
 		case 7:
 			if (count7 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{

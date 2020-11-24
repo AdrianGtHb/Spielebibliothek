@@ -34,12 +34,12 @@ char player1() {
 	unsigned int row = 0;
 
 
-	printf("%s bitte gib deine gewuenschte Position ein: \n", nickname1);
+	printf("%s bitte gib deine gew\x081nschte Position ein: \n", nickname1);
 	print_field();
 	printf("\nZeile(1-3): ");
 	scanf("%d", &row);
 	if (row < 1 || row >3) {
-		printf("ungueltige Eingabe!\nBitte versuchen Sie es erneut!\n");
+		printf("ung\x081ltige Eingabe!\nBitte versuchen Sie es erneut!\n");
 		printf("Zeile(1-3): ");
 		scanf("%d", &row);
 	}
@@ -47,7 +47,7 @@ char player1() {
 	scanf("%d", &column);
 
 	if (column < 1 || column >3) {
-		printf("ungueltige Eingabe!\n Bitte versuchen Sie es erneut!\n");
+		printf("ung\x081ltige Eingabe!\n Bitte versuchen Sie es erneut!\n");
 		printf("Spalte(1-3): ");
 		scanf("%d", &column);
 	}
@@ -66,7 +66,7 @@ char player1() {
 			printf("\nZeile(1-3): ");
 			scanf("%d", &row);
 			if (row < 1 || row >3) {
-				printf("ungueltige Eingabe!\nBitte versuchen Sie es erneut!\n");
+				printf("ung\x081ltige Eingabe!\nBitte versuchen Sie es erneut!\n");
 				printf("Zeile(1-3): ");
 				scanf("%d", &row);
 			}
@@ -74,7 +74,7 @@ char player1() {
 			scanf("%d", &column);
 
 			if (column < 1 || column >3) {
-				printf("ungueltige Eingabe!\n Bitte versuchen Sie es erneut!\n");
+				printf("ung\x081ltige Eingabe!\n Bitte versuchen Sie es erneut!\n");
 				printf("Spalte(1-3): ");
 				scanf("%d", &column);
 			}
@@ -101,13 +101,13 @@ void player2() {
 	unsigned int row = 0;
 
 
-	printf("%s bitte gib deine gewuenschte Position ein: \n", nickname2);
+	printf("%s bitte gib deine gew\x081nschte Position ein: \n", nickname2);
 	print_field();
 	printf("\nZeile(1-3): ");
 	scanf("%d", &row);
 
 	if (row < 1 || row >3) {
-		printf("ungueltige Eingabe!\nBitte versuchen Sie es erneut!\n");
+		printf("ung\x081ltige Eingabe!\nBitte versuchen Sie es erneut!\n");
 		printf("Zeile(1-3): ");
 		scanf("%d", &row);
 	}
@@ -115,7 +115,7 @@ void player2() {
 	scanf("%d", &column);
 
 	if (column < 1 || column >3) {
-		printf("ungueltige Eingabe!\n Bitte versuchen Sie es erneut!\n");
+		printf("ung\x081ltige Eingabe!\n Bitte versuchen Sie es erneut!\n");
 		printf("Spalte(1-3): ");
 		scanf("%d", &column);
 	}
@@ -134,7 +134,7 @@ void player2() {
 			printf("\nZeile(1-3): ");
 			scanf("%d", &row);
 			if (row < 1 || row >3) {
-				printf("ungueltige Eingabe!\nBitte versuchen Sie es erneut!\n");
+				printf("ung\x081ltige Eingabe!\nBitte versuchen Sie es erneut!\n");
 				printf("Zeile(1-3): ");
 				scanf("%d", &row);
 			}
@@ -142,7 +142,7 @@ void player2() {
 			scanf("%d", &column);
 
 			if (column < 1 || column >3) {
-				printf("ungueltige Eingabe!\n Bitte versuchen Sie es erneut!\n");
+				printf("ung\x081ltige Eingabe!\n Bitte versuchen Sie es erneut!\n");
 				printf("Spalte(1-3): ");
 				scanf("%d", &column);
 			}
@@ -247,7 +247,7 @@ void gameTTT() {
 		tries++;
 		win();
 		if (winner == 1) {
-			printf("\n%d Zuege bis zum SIEG!!", 1 + tries / 2);
+			printf("\n%d Z\x081ge bis zum SIEG!!", 1 + tries / 2);
 			printf("\n---Ende---");
 			getchar();
 			exit(0);
@@ -263,7 +263,7 @@ void gameTTT() {
 		tries++;
 		win();
 		if (winner == 1) {
-			printf("\n%d Zuege bis zum SIEG!!", tries / 2);
+			printf("\n%d Z\x081ge bis zum SIEG!!", tries / 2);
 			printf("\n---Ende---");
 			getchar();
 			exit(0);

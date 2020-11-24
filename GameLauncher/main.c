@@ -20,7 +20,7 @@ int main(void)
 		system("cls");
 
 		print_image("image.txt");
-		printf("\n--- Welches Spiel moechtest du spielen? ---\n\n");
+		printf("\n--- Welches Spiel m\x094\chtest du spielen? ---\n\n");
 		printf("[1] Tic-Tac-Toe\n");
 		printf("[2] Vier gewinnt\n");
 		printf("[3] Schiffe versenken\n");
