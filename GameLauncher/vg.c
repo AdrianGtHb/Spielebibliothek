@@ -494,8 +494,10 @@ void gameVierGewinnt()
 	int auswahl = 0;
 	int score1 = 0;
 	int score2 = 0;
-	
-	printf("-------------------------------------------\n   4 Gewinnt\n-------------------------------------------\n\n1)Spielen\n2)Spiel laden\n3)Beenden\n");
+
+
+	print_image("4Gewinntimage.txt");
+	printf("\n\n1)Spielen\n2)Spiel laden\n3)Beenden\n");
 
 	scanf("%d%c", &auswahl, &puffer);
 
