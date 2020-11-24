@@ -9,6 +9,10 @@ int gamePlayer = 0;
 int beenden = 0;
 char puffer;
 
+#define RED     "\x1b[31m"
+#define YELLOW  "\x1b[33m"
+#define RESETCOLOUR   "\x1b[0m"
+
 void createGame()
 {
 	strcpy(Feld1[0], "P1     Dein Feld\t\t  Gegnerisches Feld");
@@ -83,7 +87,21 @@ void showGame()
 			for (int k = 0; k < 54; k++)
 			{
 				if (Feld1[i][k] == '#')
+				{
 					printf("%c", 254);
+				}
+				else if (Feld1[i][k] == 'X')
+				{
+					printf(RED);
+					printf("X");
+					printf(RESETCOLOUR);
+				}
+				else if (Feld1[i][k] == 'O')
+				{
+					printf(YELLOW);
+					printf("O");
+					printf(RESETCOLOUR);
+				}
 				else
 					printf("%c", Feld1[i][k]);
 			}
@@ -97,7 +115,21 @@ void showGame()
 			for (int k = 0; k < 54; k++)
 			{
 				if (Feld2[i][k] == '#')
+				{
 					printf("%c", 254);
+				}
+				else if (Feld2[i][k] == 'X')
+				{
+					printf(RED);
+					printf("X");
+					printf(RESETCOLOUR);
+				}
+				else if (Feld2[i][k] == 'O')
+				{
+					printf(YELLOW);
+					printf("O");
+					printf(RESETCOLOUR);
+				}
 				else
 					printf("%c", Feld2[i][k]);
 			}
