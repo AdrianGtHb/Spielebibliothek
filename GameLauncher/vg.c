@@ -234,6 +234,9 @@ int eingabe()
 				z++;
 			}
 			break;
+		case 8:
+			z++;
+			break;
 		case 9:
 			printf("Spiel wird gespeichert...");
 			abspeichern();
@@ -397,6 +400,7 @@ int gameLoop(int score1, int score2, int loadVar) {
 		count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0;
 	}
 	else {
+		count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0;
 		for (int j = 1; j < 7; j++) {
 			if (disp[j][2] != ' ') {
 				count1++;
@@ -444,6 +448,9 @@ int gameLoop(int score1, int score2, int loadVar) {
 		printf("\n-------------------------------------------\n\n");
 		anzeigen();
 		int input = eingabe();
+		if (input == 8) {
+			break;
+		}
 		change(input);
 		c = unentschieden();
 		x = check();
