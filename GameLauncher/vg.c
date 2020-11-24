@@ -63,7 +63,6 @@ void anzeigen()
 			if(disp[i][k] != '0' && disp[i][k] != 'X'){
 				printf("%c", disp[i][k]);
 			}
-			//printf("%c", disp[i][k]);
 		}
 		printf("\n");
 	}
