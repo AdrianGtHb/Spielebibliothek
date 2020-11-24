@@ -55,15 +55,14 @@ void anzeigen()
 				printf("0");
 				printf(RESETCOLOUR);
 			}
-			if (disp[i][k] == '0') {
+			else if (disp[i][k] == '0') {
 				printf(YELLOW);
 				printf("%c", disp[i][k]);
 				printf(RESETCOLOUR);
 			}
-			if(disp[i][k] != '0' && disp[i][k] != 'X'){
+			else {
 				printf("%c", disp[i][k]);
 			}
-			//printf("%c", disp[i][k]);
 		}
 		printf("\n");
 	}
@@ -99,7 +98,7 @@ int eingabe()
 		case 1:
 			if (count1 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -109,7 +108,7 @@ int eingabe()
 		case 2:
 			if (count2 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -119,7 +118,7 @@ int eingabe()
 		case 3:
 			if (count3 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -129,7 +128,7 @@ int eingabe()
 		case 4:
 			if (count4 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -139,7 +138,7 @@ int eingabe()
 		case 5:
 			if (count5 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -149,7 +148,7 @@ int eingabe()
 		case 6:
 			if (count6 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -159,7 +158,7 @@ int eingabe()
 		case 7:
 			if (count7 == 6)
 			{
-				printf(RED	"Bitte eine Reihe mit freien Plaetzen waehlen."		RESETCOLOUR);
+				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
 			}
 			else
 			{
@@ -325,8 +324,8 @@ void gameVierGewinnt()
 	int score1 = 0;
 	int score2 = 0;
 
-  
-	printf("-------------------------------------------\n   4 Gewinnt\n-------------------------------------------\n\n1)Spielen\n2)Beenden\n");
+	print_image("4Gewinntimage.txt");
+	printf("\n\n1)Spielen\n2)Beenden\n");
 	scanf("%d%c", &auswahl, &puffer);
 
 	if (auswahl == 1)
@@ -350,11 +349,11 @@ void gameVierGewinnt()
 			while (x == 0 && c == 0)
 			{
 				system("cls");
-				printf("-------------------------------------------\n   4 Gewinnt\tScore: ");
+				print_image("4Gewinntimage.txt");
+				printf("\n\nScore: ");
 				printf(YELLOW	"%s[%d] ", p1, score1);
-				printf(CYAN	"%s[%d]",p2, score2);
+				printf(CYAN	"%s[%d]\n\n\n",p2, score2);
 				printf(RESETCOLOUR);
-				printf("\n-------------------------------------------\n\n");
 				anzeigen();
 				int input = eingabe();
 				change(input);
@@ -363,23 +362,23 @@ void gameVierGewinnt()
 				tries++;
 			}
 			system("cls");
-			printf("-------------------------------------------\n   4 Gewinnt\tScore: ");
+			print_image("4Gewinntimage.txt");
+			printf("\n\nScore: ");
 			printf(YELLOW	"%s[%d] ", p1, score1);
-			printf(CYAN	"%s[%d]", p2, score2);
+			printf(CYAN	"%s[%d]\n\n\n", p2, score2);
 			printf(RESETCOLOUR);
-			printf("\n-------------------------------------------\n\n");
 			anzeigen();
 			if (x >= 1)
 			{
 				if (player == 1)
 				{
-					printf(YELLOW	"\n%s hat nach %d Zuegen gewonnen![%c]", p1, tries, coin);
+					printf(YELLOW	"\n%s hat nach %d Z\x081gen gewonnen![%c]", p1, tries, coin);
 					printf(RESETCOLOUR);
 					score1++;
 				}
 				else if (player == 2)
 				{
-					printf(CYAN		"\n%s hat nach %d Zuegen gewonnen![%c]", p2, tries, coin);
+					printf(CYAN		"\n%s hat nach %d Z\x081gen gewonnen![%c]", p2, tries, coin);
 					printf(RESETCOLOUR);
 					score2++;
 				}
