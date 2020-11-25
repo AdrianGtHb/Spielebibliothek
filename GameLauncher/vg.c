@@ -66,7 +66,8 @@ void abspeichern() {
 		fclose(fp2);
 		return;
 	}
-	fprintf(fp2, "%s;%s", p1, p2);
+	flipper--;
+	fprintf(fp2, "%s;%s;%d", p1, p2, flipper);
 	fclose(fp2);
 
 	printf("\nSpiel wurde gespeichert!");
@@ -103,9 +104,13 @@ void gameLoad() {
 		char* _bezTempOne = token1;
 		token1 = strtok_s(NULL, seps, &next_token1);
 		char* _bezTeampTwo = token1;
+		token1 = strtok_s(NULL, seps, &next_token1);
+		char* tempChar[10];
+		strcpy(tempChar, token1);
 
 		strcpy(p1, _bezTempOne);
 		strcpy(p2, _bezTeampTwo);
+		flipper = atoi(tempChar);
 	}
 	fclose(fp2);
 
