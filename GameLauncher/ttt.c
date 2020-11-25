@@ -162,9 +162,8 @@ if (fp == NULL) {
 }
 void tttgameLoad() {
 	
-
-	const char DATEINAMEPLATTT[] = "tttplayers.txt";
-    char temp;
+    const char DATEINAMEPLATTT[] = "tttplayers.txt";
+    /*char temp;*/
 	
 	FILE* fp = fopen(DATEINAMEPLATTT, "r");
 	if (fp == NULL) {
@@ -172,9 +171,9 @@ void tttgameLoad() {
 		fclose(fp);
 		return;
 	}
-    temp = fgetc(fp);
-    printf("%s", temp);
-	/*char buffer[80];
+    /*temp = fgetc(fp);
+    printf("%s", temp);*/
+	char buffer[80];
 	char seps[] = { ";" };
 	char* token1 = NULL;
 	char* next_token1 = NULL;
@@ -189,7 +188,7 @@ void tttgameLoad() {
 
 		strcpy(nickname1, _bezTempOne);
 		strcpy(nickname2, _bezTempTwo);
-	}*/
+	}
 	fclose(fp);
     printf(GREEN);
     print_image("load_succesful.txt");
