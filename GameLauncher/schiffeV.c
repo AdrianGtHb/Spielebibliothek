@@ -413,8 +413,7 @@ void sieg()
 void schuss()
 {
 	system("cls");
-	printf("SPIELERWECHSEL!");
-	getchar();
+	
 	int sBreite = 0;
 	int sLaenge = 0;
 	int fehlversuch = 0;
@@ -677,31 +676,188 @@ void schuss()
 	sieg();
 }
 
+void gameSpeichern() {
+	const char DATEINAMEP1[] = "schiffeVP1.data";
+	const char DATEINAMEP2[] = "schiffeVP2.data";
+	const char DATEINAMETP[] = "playerTurn.txt";
 
+	FILE* meineDatei1 = fopen(DATEINAMEP1, "wb");
+
+	if (meineDatei1 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMEP1);
+		fclose(meineDatei1);
+		return;
+	}
+
+	fwrite(Feld1, sizeof(char), sizeof(Feld1), meineDatei1);
+	fclose(meineDatei1);
+
+	FILE* meineDatei2 = fopen(DATEINAMEP2, "wb");
+
+	if (meineDatei2 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMEP2);
+		fclose(meineDatei2);
+		return;
+	}
+
+	fwrite(Feld2, sizeof(char), sizeof(Feld2), meineDatei2);
+	fclose(meineDatei2);
+
+	FILE* meineDatei3 = fopen(DATEINAMETP, "w+");
+	if (meineDatei3 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMETP);
+		fclose(meineDatei3);
+		return;
+	}
+	gameFlipper--;
+	fprintf(meineDatei3, "%d", gameFlipper);
+	fclose(meineDatei3);
+
+	printf("\nSpiel wurde gespeichert!\n");
+}
+
+void spielladen() {
+	const char DATEINAMEP1[] = "schiffeVP1.data";
+	const char DATEINAMEP2[] = "schiffeVP2.data";
+	const char DATEINAMETP[] = "playerTurn.txt";
+
+	FILE* meineDatei1 = fopen(DATEINAMEP1, "rb");
+
+	if (meineDatei1 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMEP1);
+		fclose(meineDatei1);
+		return;
+	}
+
+	fread(Feld1, sizeof(char), sizeof(Feld1), meineDatei1);
+	fclose(meineDatei1);
+
+	FILE* meineDatei2 = fopen(DATEINAMEP2, "rb");
+
+	if (meineDatei2 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMEP2);
+		fclose(meineDatei2);
+		return;
+	}
+
+	fread(Feld2, sizeof(char), sizeof(Feld2), meineDatei2);
+	fclose(meineDatei2);
+
+	FILE* meineDatei3 = fopen(DATEINAMETP, "r");
+	if (meineDatei3 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMETP);
+		fclose(meineDatei3);
+		return;
+	}
+	char buffer[80];
+	fgets(buffer, 80, meineDatei3);
+
+	gameFlipper = atoi(buffer);
+
+	printf("\n\nSpiel wurde geladen!\n");
+
+}
 
 void gameSchiffeVersenken()
 {
-	system("cls");
-	createGame();
-	pchanger();
-	shipinput();
-	system("cls");
-	showGame();
-	printf("\nSPIELERWECHSEL...");
-	getchar();
-	system("cls");
-	printf("\nSPIELERWECHSEL...");
-	getchar();
-	pchanger();
-	shipinput();
-	system("cls");
-	showGame();
-	printf("\nSPIELERWECHSEL...");
-	getchar();
+	int auswahl = 0;
+	
 
-	while (beenden == 0)
-	{
-		pchanger();
-		schuss();
-	}
+	do {
+		int auswahlGame = 0;
+		beenden = 0;
+		system("cls");
+		printf("Men\x081:\n1)Spielen\n2)Spiel laden\n3)Beenden\nEingabe: ");
+		scanf("%d%c", &auswahl, &puffer);
+
+		switch (auswahl) {
+		case 1:
+			system("cls");
+			createGame();
+			pchanger();
+			shipinput();
+			system("cls");
+			showGame();
+			printf("\nSPIELERWECHSEL...");
+			getchar();
+			system("cls");
+			printf("\nSPIELERWECHSEL...");
+			getchar();
+			pchanger();
+			shipinput();
+			system("cls");
+			showGame();
+			printf("\nSPIELERWECHSEL...");
+			getchar();
+
+			while (beenden == 0)
+			{
+				pchanger();
+				printf("SPIELERWECHSEL!");
+				getchar();
+
+				system("cls");
+				printf("Men\x081:\n1)Schuss\n2)Speichern\n3)Beenden\nEingabe: ");
+				scanf("%d%c", &auswahlGame, &puffer);
+
+				switch (auswahlGame) {
+				case 1:
+					schuss();
+					break;
+				case 2:
+					gameSpeichern();
+					getchar();
+					beenden++;
+					break;
+				case 3:
+					printf("-- Spiel wurde beendet! --");
+					getchar();
+					beenden++;
+					break;
+				default:
+					printf("Falsche Eingabe!");
+					break;
+				}
+			}
+			break;
+		case 2:
+			spielladen();
+
+			while (beenden == 0)
+			{
+				pchanger();
+				printf("SPIELERWECHSEL!");
+				getchar();
+
+				system("cls");
+				printf("Men\x081:\n1)Schuss\n2)Speichern\n3)Beenden\nEingabe: ");
+				scanf("%d%c", &auswahlGame, &puffer);
+
+				switch (auswahlGame) {
+				case 1:
+					schuss();
+					break;
+				case 2:
+					gameSpeichern();
+					getchar();
+					beenden++;
+					break;
+				case 3:
+					printf("-- Spiel wurde beendet! --");
+					getchar();
+					beenden++;
+					break;
+				default:
+					printf("Falsche Eingabe!");
+					break;
+				}
+			}
+
+			break;
+		case 3:
+			printf("\n-- Ende --");
+			break;
+		}
+
+	} while (auswahl < 3);
 }
