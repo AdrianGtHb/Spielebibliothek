@@ -391,7 +391,7 @@ int unentschieden()
 	return full;
 }
 
-int gameLoop(int score1, int score2, int loadVar) {
+void gameLoop(int *score1, int *score2, int loadVar) {
 	int x = 0;
 	int c = 0;
 	int tries = 0;
@@ -442,8 +442,8 @@ int gameLoop(int score1, int score2, int loadVar) {
 	{
 		system("cls");
 		printf("-------------------------------------------\n   4 Gewinnt\tScore: ");
-		printf(YELLOW	"%s[%d] ", p1, score1);
-		printf(CYAN	"%s[%d]", p2, score2);
+		printf(YELLOW	"%s[%d] ", p1, *score1);
+		printf(CYAN	"%s[%d]", p2, *score2);
 		printf(RESETCOLOUR);
 		printf("\n-------------------------------------------\n\n");
 		anzeigen();
@@ -458,8 +458,8 @@ int gameLoop(int score1, int score2, int loadVar) {
 	}
 	system("cls");
 	printf("-------------------------------------------\n   4 Gewinnt\tScore: ");
-	printf(YELLOW	"%s[%d] ", p1, score1);
-	printf(CYAN	"%s[%d]", p2, score2);
+	printf(YELLOW	"%s[%d] ", p1, *score1);
+	printf(CYAN	"%s[%d]", p2, *score2);
 	printf(RESETCOLOUR);
 	printf("\n-------------------------------------------\n\n");
 	anzeigen();
@@ -469,21 +469,19 @@ int gameLoop(int score1, int score2, int loadVar) {
 		{
 			printf(YELLOW	"\n%s hat nach %d Zuegen gewonnen![%c]", p1, tries, coin);
 			printf(RESETCOLOUR);
-			score1++;
+			*score1 = *score1 + 1;
 		}
 		else if (player == 2)
 		{
 			printf(CYAN		"\n%s hat nach %d Zuegen gewonnen![%c]", p2, tries, coin);
 			printf(RESETCOLOUR);
-			score2++;
+			*score2 = *score2 + 1;
 		}
 	}
 	else if (c >= 1)
 	{
 		printf("\nUnentschieden!");
 	}
-
-	return score1, score2;
 }
 
 void gameVierGewinnt()
@@ -515,14 +513,14 @@ void gameVierGewinnt()
 		{
 		case 1:
 			erstellen();
-			score1, score2 = gameLoop(score1, score2, 0);
+			gameLoop(&score1, &score2, 0);
 			printf("\n\n1)Nochmal\n2)Spiel laden\n3)Beenden\nEingabe: ");
 			scanf("%d%c", &auswahl, &puffer);
 			break;
 		case 2:
 			printf("Spiel wird geladen...");
 			gameLoad();
-			score1, score2 = gameLoop(score1, score2, 1);
+			gameLoop(&score1, &score2, 1);
 			printf("\n\n1)Nochmal\n2)Spiel laden\n3)Beenden\nEingabe: ");
 			scanf("%d%c", &auswahl, &puffer);
 			break;
