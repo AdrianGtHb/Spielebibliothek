@@ -9,6 +9,9 @@
 
 #define MAX_LEN 128
 
+#define YELLOW  "\x1b[33m"
+#define RESETCOLOUR   "\x1b[0m"
+
 void print_image(FILE* fptr);
 
 int main(void)
@@ -18,8 +21,9 @@ int main(void)
 	
 	do {
 		system("cls");
-
+		printf(YELLOW);
 		print_image("image.txt");
+		printf(RESETCOLOUR);
 		printf("\n--- Welches Spiel m\x094\chtest du spielen? ---\n\n");
 		printf("[1] Tic-Tac-Toe\n");
 		printf("[2] Vier gewinnt\n");
