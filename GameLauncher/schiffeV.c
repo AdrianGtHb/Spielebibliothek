@@ -12,6 +12,7 @@ char puffer;
 
 #define RED     "\x1b[31m"
 #define YELLOW  "\x1b[33m"
+#define CYAN    "\x1b[36m"
 #define RESETCOLOUR   "\x1b[0m"
 
 void createGame()
@@ -81,7 +82,9 @@ void createGame()
 
 void showGame()
 {
+	printf(CYAN);
 	print_image("shipimage.txt");
+	printf(RESETCOLOUR);
 	printf("\n\n");
 	if (gamePlayer == 0)
 	{
