@@ -27,7 +27,7 @@ void fill() {
         }
     }
 }
-void print() {
+void print() { //Feld
 	for (int i = 0; i < 3; i++)
 	{
 		printf("\t");
@@ -95,15 +95,15 @@ void maingame(int* option) {
 	char temp[20], tempposition;
 	int counter = 0, player = 0, position = 0, tempoption = 0;
 	fill();
-	if (nickname1[1] == '\0' && nickname2[1] == '\0')
+	if (nickname1[1] == '\0' && nickname2[1] == '\0') //Nickname neu einlesen, falls kein Spielstand geladen wurde 
 	{
 		name();
 	}
 	win = 0;
-	while (win < 1 && counter < 10) {
+	while (win < 1 && counter < 10) { 
 		header();
 		print();
-		if (counter % 2 == 0) {
+		if (counter % 2 == 0) { //Spielerwechsel
 			memcpy(temp, nickname1, sizeof(nickname1));
 			printf("\n==============================\n");
 			printf(YELLOW "%s bitte geben Sie das Feld(1-9) ein, auf das Sie [O] setzen moechten : ", nickname1);
@@ -119,7 +119,7 @@ void maingame(int* option) {
 		}
 		scanf("%d%c", &position, &puffer);
 		tempposition = position + '0';
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 3; i++) //Spielerzeichen setzen
 		{
 			for (int k = 0; k < 3; k++)
 			{
