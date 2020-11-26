@@ -143,19 +143,17 @@ void maingame(int *option) {
 
 void tttspeichern(){
     system("cls");
-const char DATEINAMEPLATTT[] = "tttplayers.txt";
+    const char DATEINAMEPLATTT[] = "tttplayers.txt";
 
-FILE* fp = fopen(DATEINAMEPLATTT, "w+");
-if (fp == NULL) {
+    FILE* fp1 = fopen(DATEINAMEPLATTT, "w+");
+    if (fp1 == NULL) {
 		printf("\nDatei %s konnte nicht geoeffnet werden!\n", DATEINAMEPLATTT);
-		fclose(fp);
+		fclose(fp1);
 		return;
 	}
-	fprintf(fp, "%s;%s", nickname1, nickname2);
-	fclose(fp);
-    printf(GREEN);
-    print_image("saved_succesful.txt");
-    printf(RESETCOLOR);
+	fprintf(fp1, "%s;%s", nickname1, nickname2);
+	fclose(fp1);
+    system("cls");
 	printf("\nSpiel wurde gespeichert!");
     getchar();
     system("cls");
@@ -163,25 +161,23 @@ if (fp == NULL) {
 void tttgameLoad() {
 	
     const char DATEINAMEPLATTT[] = "tttplayers.txt";
-    /*char temp;*/
 	
-	FILE* fp = fopen(DATEINAMEPLATTT, "r");
-	if (fp == NULL) {
+	FILE* fp2 = fopen(DATEINAMEPLATTT, "r");
+	if (fp2 == NULL) {
 		printf("\nDatei %s konnte nicht geoeffnet werden!\n", DATEINAMEPLATTT);
-		fclose(fp);
+		fclose(fp2);
 		return;
 	}
-    /*temp = fgetc(fp);
-    printf("%s", temp);*/
+    
 	char buffer[80];
 	char seps[] = { ";" };
 	char* token1 = NULL;
 	char* next_token1 = NULL;
 	char* next_token2 = NULL;
-	if (fgets(buffer, 80, fp) != NULL) {
+	if (fgets(buffer, 80, fp2) != NULL) {
 
 		token1 = strtok_s(buffer, seps, &next_token1, seps, &next_token2);
-		char* _bezTempOne = token1;
+        char* _bezTempOne = token1;
 
 		token1 = strtok_s(NULL, seps, &next_token1);
 		char* _bezTempTwo = token1;
@@ -189,10 +185,8 @@ void tttgameLoad() {
 		strcpy(nickname1, _bezTempOne);
 		strcpy(nickname2, _bezTempTwo);
 	}
-	fclose(fp);
-    printf(GREEN);
-    print_image("load_succesful.txt");
-    printf(RESETCOLOR);
+	fclose(fp2);
+    system("cls");
 	printf("\nSpiel wurde geladen!\n");
     getchar();
     system("cls");
@@ -209,7 +203,7 @@ void gameTTT() {
         system("cls");
         switch (menuoption)
         {
-        case 1://Spielen
+        case 1:
             fill();
             while (menuoption == 1)
                 maingame(&menuoption);
