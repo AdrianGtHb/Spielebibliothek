@@ -145,7 +145,7 @@ int eingabe()
 {
 	int eingabe = 0;
 	int z = 0;
-	flipper++;
+	flipper++;		//Spielerwechsel
 	if (flipper % 2 == 0)
 	{
 		player = 2;
@@ -169,7 +169,7 @@ int eingabe()
 
 		switch (eingabe)
 		{
-		case 1:
+		case 1:		//Überprüfung ob diese Reihe frei ist
 			if (count1 == 6)
 			{
 				printf(RED	"Bitte eine Reihe mit freien Pl\x084tzen w\x084hlen."		RESETCOLOUR);
@@ -257,7 +257,7 @@ void change(input)
 {
 	switch (input)
 	{
-	case 1:
+	case 1:		//Eingabe in Array gespeichert
 		disp[6 - count1][2] = coin;
 		count1++;
 		break;
@@ -295,7 +295,7 @@ int check()
 	int score;
 	int winner = 0;
 
-	for (int k = 1; k < 8; k++)
+	for (int k = 1; k < 8; k++)		//Horizontal
 	{
 		for (int i = 2; i < 15; i += 2)
 		{
@@ -317,7 +317,7 @@ int check()
 		}
 	}
 
-	for (int k = 1; k < 8; k++)
+	for (int k = 1; k < 8; k++)		//Vertikal
 	{
 		for (int i = 2; i < 15; i += 2)
 		{
@@ -339,7 +339,7 @@ int check()
 		}
 	}
 
-	for (int k = 1; k < 8; k++)
+	for (int k = 1; k < 8; k++)		//Diagonal 1
 	{
 		for (int i = 2; i < 15; i += 2)
 		{
@@ -361,7 +361,7 @@ int check()
 		}
 	}
 
-	for (int k = 1; k < 8; k++)
+	for (int k = 1; k < 8; k++)		//Diagonal 2
 	{
 		for (int i = 2; i < 15; i += 2)
 		{
@@ -498,8 +498,9 @@ void gameVierGewinnt()
 	int score1 = 0;
 	int score2 = 0;
 
-
+	printf(YELLOW);
 	print_image("4Gewinntimage.txt");
+	printf(RESETCOLOUR);
 	printf("\n\n1)Spielen\n2)Spiel laden\n3)Beenden\n");
 
 	scanf("%d%c", &auswahl, &puffer);
