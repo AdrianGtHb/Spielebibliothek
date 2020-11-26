@@ -800,10 +800,11 @@ void gameSchiffeVersenken()
 
 			while (beenden == 0)
 			{
-				pchanger();
+				
+
+				system("cls");
 				printf("SPIELERWECHSEL!");
 				getchar();
-
 				system("cls");
 				printf("Men\x081:\n1)Schuss\n2)Speichern\n3)Beenden\nEingabe: ");
 				scanf("%d%c", &auswahlGame, &puffer);
