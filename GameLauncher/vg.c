@@ -501,7 +501,7 @@ void gameVierGewinnt()
 	printf(YELLOW);
 	print_image("4Gewinntimage.txt");
 	printf(RESETCOLOUR);
-	printf("\n\n1)Spielen\n2)Spiel laden\n3)Beenden\n");
+	printf("\n\nTip: Sie k\x094nnen w\x084hrend dem Spiel (8) f\x081r das Men\x081, und (9) zum Speichern dr\x081\cken.\n\n1)Spielen\n2)Spiel laden\n3)Beenden\n");
 
 	scanf("%d%c", &auswahl, &puffer);
 
