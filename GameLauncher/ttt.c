@@ -28,32 +28,44 @@ void fill() {
     }
 }
 void print() {
-    for (int i = 0; i < 3; i++)
-    {
-        printf("\t");
-        for (int k = 0; k < 3; k++)
-        {
-            printf(" %c ", field[i][k]);
-            if (k < 2)
-                printf("|");
-        }
-        printf("\n");
-        if (i < 2) {
-            printf("\t");
-            for (int r = 0; r < 12; r++)
-            {
-                printf("%c", 196);
-            }
-            printf("\n");
-        }
-    }
+	for (int i = 0; i < 3; i++)
+	{
+		printf("\t");
+		for (int k = 0; k < 3; k++)
+		{
+			if (field[i][k] == 'O')
+			{
+				printf(YELLOW   " %c ", field[i][k]);
+				printf(RESETCOLOR);
+			}
+			else if (field[i][k] == 'X')
+			{
+				printf(CYAN   " %c ", field[i][k]);
+				printf(RESETCOLOR);
+			}
+			else {
+				printf(" %c ",field[i][k]);
+			}
+			if (k < 2)
+				printf("|");
+		}
+		printf("\n");
+		if (i < 2) {
+			printf("\t");
+			for (int r = 0; r < 12; r++)
+			{
+				printf("%c", 196);
+			}
+			printf("\n");
+		}
+	}
 }
 void winning() {
     for (int i = 0; i < 3; i++)
     {
-        if (field[i][0] == field[i][1] && field[i][1] == field[i][2] || field[0][i] == field[1][i] && field[1][i]  == field[2][i])//Prüfen der Gewinnmöglichkeiten vertikal und horizontal
+        if (field[i][0] == field[i][1] && field[i][1] == field[i][2] || field[0][i] == field[1][i] && field[1][i]  == field[2][i])//Prfen der Gewinnmglichkeiten vertikal und horizontal
             win = 1;
-        if (field[0][0] == field[1][1]&& field[1][1] == field[2][2] || field[0][2] == field[1][1]&& field[1][1] == field[2][0])//Prüfen der Gewinnmöglichkeiten diagonal
+        if (field[0][0] == field[1][1]&& field[1][1] == field[2][2] || field[0][2] == field[1][1]&& field[1][1] == field[2][0])//Prfen der Gewinnmglichkeiten diagonal
             win = 1;
     }
 }
@@ -79,66 +91,70 @@ void name() {
     gets(nickname2);
     system("cls");
 }
-void maingame(int *option) {
-    char temp[20], tempposition;
-    int counter = 0, player = 0, position = 0, tempoption=0;
-    fill();
-    if (nickname1[1]=='\0'&& nickname2[1] == '\0')
-    {
-         name();
-    }
-    win = 0;
-    while (win < 1 && counter < 10) {
-        header();
-        if (counter % 2 == 0) {
-            memcpy(temp, nickname1, sizeof(nickname1));
-            player = 1;
-        }
-        else {
-            memcpy(temp, nickname2, sizeof(nickname2));
-            player = 2;
-        }
-        print();
-        printf("\n==============================\n%s bitte geben Sie das Feld(1-9) ein, auf das Sie ", temp);
-        printf("setzen moechten : ");
-        scanf("%d%c", &position, &puffer);
-        tempposition = position + '0';
-        for (int i = 0; i < 3; i++)
-        {
-            for (int k = 0; k < 3; k++)
-            {
-                if (field[i][k] == tempposition && player == 1) {
-                    field[i][k] = '0';
-                    counter++;
-                }
-                if (field[i][k] == tempposition && player == 2) {
-                    field[i][k] = 'X';
-                    counter++;
-                }
-                if (counter > 4)
-                {
-                    winning();
-                }
-            }
-        }
-        system("cls");
-    }
-    if (counter == 9) {
-        printf("\nUNENTSCHIEDEN!");
-    }
-    if (win > 0) {
-        header();
-        print();
-        printf(GREEN);
-        print_image("winner.txt");
-        printf(RESETCOLOR);
-        
-    }
-    printf("%s, Sie haben nach %d Zuegen gewonnen!\n\n1)Nochmal spielen\n2)Zurueck zum TicTacToe Menu\nBitte geben Sie die gewuenschte Option ein: ", temp, counter);
-    scanf("%d%c", &tempoption, &puffer);
-    *option = tempoption;
-    system("cls");
-    counter = 0;
+void maingame(int* option) {
+	char temp[20], tempposition;
+	int counter = 0, player = 0, position = 0, tempoption = 0;
+	fill();
+	if (nickname1[1] == '\0' && nickname2[1] == '\0')
+	{
+		name();
+	}
+	win = 0;
+	while (win < 1 && counter < 10) {
+		header();
+		print();
+		if (counter % 2 == 0) {
+			memcpy(temp, nickname1, sizeof(nickname1));
+			printf("\n==============================\n");
+			printf(YELLOW "%s bitte geben Sie das Feld(1-9) ein, auf das Sie [O] setzen moechten : ", nickname1);
+			printf(RESETCOLOR);
+			player = 1;
+		}
+		else {
+			memcpy(temp, nickname2, sizeof(nickname2));
+			printf("\n==============================\n");
+			printf(CYAN "%s bitte geben Sie das Feld(1-9) ein, auf das Sie [X] setzen moechten : ", nickname1);
+			printf(RESETCOLOR);
+			player = 2;
+		}
+		scanf("%d%c", &position, &puffer);
+		tempposition = position + '0';
+		for (int i = 0; i < 3; i++)
+		{
+			for (int k = 0; k < 3; k++)
+			{
+				if (field[i][k] == tempposition && player == 1) {
+					field[i][k] = 'O';
+					counter++;
+				}
+				if (field[i][k] == tempposition && player == 2) {
+					field[i][k] = 'X';
+					counter++;
+				}
+				if (counter > 4)
+				{
+					winning();
+				}
+			}
+		}
+		system("cls");
+	}
+	if (counter == 9) {
+		printf("\nUNENTSCHIEDEN!");
+	}
+	if (win > 0) {
+		header();
+		print();
+		printf(GREEN);
+		print_image("winner.txt");
+		printf(RESETCOLOR);
+
+	}
+	printf("%s, Sie haben nach %d Zuegen gewonnen!\n\n1)Nochmal spielen\n2)Zurueck zum TicTacToe Menu\nBitte geben Sie die gewuenschte Option ein: ", temp, counter);
+	scanf("%d%c", &tempoption, &puffer);
+	*option = tempoption;
+	system("cls");
+	counter = 0;
 }
 
 void tttspeichern(){
@@ -217,7 +233,7 @@ void gameTTT() {
         case 4:name();
             system("cls");
             break;
-        case 5: clear();
+        case 5:
             break;
         default:
             break;
