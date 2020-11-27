@@ -63,13 +63,13 @@ void print() { //Feld
 void winning() {
     for (int i = 0; i < 3; i++)
     {
-        if (field[i][0] == field[i][1] && field[i][1] == field[i][2] || field[0][i] == field[1][i] && field[1][i]  == field[2][i])//Prfen der Gewinnmglichkeiten vertikal und horizontal
+        if (field[i][0] == field[i][1] && field[i][1] == field[i][2] || field[0][i] == field[1][i] && field[1][i]  == field[2][i])//Pruefen der Gewinnmglichkeiten vertikal und horizontal
             win = 1;
-        if (field[0][0] == field[1][1]&& field[1][1] == field[2][2] || field[0][2] == field[1][1]&& field[1][1] == field[2][0])//Prfen der Gewinnmglichkeiten diagonal
+        if (field[0][0] == field[1][1]&& field[1][1] == field[2][2] || field[0][2] == field[1][1]&& field[1][1] == field[2][0])//Pruefen der Gewinnmglichkeiten diagonal
             win = 1;
     }
 }
-void header() {
+void header() {//Header fuer das Spiel
     printf(CYAN);
     printf(".-----. _         .-----.             .-----.            \n");
     printf("`-. .-':_;        `-. .-'             `-. .-'            \n");
@@ -79,11 +79,11 @@ void header() {
     printf("=========================================================\n\n");
     printf(RESETCOLOR);
 }
-void menu() {
+void menu() {Spielmenu
     header();
     printf("1)Spielen\n2)Namen speichern\n3)Namen laden\n4)Neue Namen festlegen\n5)Beenden\nBitte geben Sie die gewuenschte Option ein: ");
 }
-void name() {
+void name() {Namenabfrage
     header();
     printf("Spieler1, bitte geben Sie Ihren Namen ein: ");
     gets(nickname1);
@@ -142,7 +142,7 @@ void maingame(int* option) {
 	if (counter == 9) {
 		printf("\nUNENTSCHIEDEN!");
 	}
-	if (win > 0) {
+	if (win > 0) {//winning screen
 		header();
 		print();
 		printf(GREEN);
