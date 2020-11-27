@@ -2,20 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include<Windows.h>
-#define RED     "\x1b[31m"
+
 #define GREEN   "\x1b[32m"
 #define YELLOW  "\x1b[33m"
-#define BLUE    "\x1b[34m"
-#define MAGENTA "\x1b[35m"
 #define CYAN    "\x1b[36m"
 #define RESETCOLOR   "\x1b[0m"
 char field[3][3], nickname1[20], nickname2[20], puffer;
 int win = 0;
 
-void clear() {
-    getchar();
-    system("cls");
-}
 void fill() {
     int h = 49;
     for (int i = 0; i < 3; i++)
@@ -27,7 +21,7 @@ void fill() {
         }
     }
 }
-void print() {
+void print() { //Feld
 	for (int i = 0; i < 3; i++)
 	{
 		printf("\t");
@@ -63,13 +57,13 @@ void print() {
 void winning() {
     for (int i = 0; i < 3; i++)
     {
-        if (field[i][0] == field[i][1] && field[i][1] == field[i][2] || field[0][i] == field[1][i] && field[1][i]  == field[2][i])//Prfen der Gewinnmglichkeiten vertikal und horizontal
+        if (field[i][0] == field[i][1] && field[i][1] == field[i][2] || field[0][i] == field[1][i] && field[1][i]  == field[2][i])//Pruefen der Gewinnmglichkeiten vertikal und horizontal
             win = 1;
-        if (field[0][0] == field[1][1]&& field[1][1] == field[2][2] || field[0][2] == field[1][1]&& field[1][1] == field[2][0])//Prfen der Gewinnmglichkeiten diagonal
+        if (field[0][0] == field[1][1]&& field[1][1] == field[2][2] || field[0][2] == field[1][1]&& field[1][1] == field[2][0])//Pruefen der Gewinnmglichkeiten diagonal
             win = 1;
     }
 }
-void header() {
+void header() {//Header fuer das Spiel
     printf(CYAN);
     printf(".-----. _         .-----.             .-----.            \n");
     printf("`-. .-':_;        `-. .-'             `-. .-'            \n");
@@ -79,11 +73,11 @@ void header() {
     printf("=========================================================\n\n");
     printf(RESETCOLOR);
 }
-void menu() {
+void menu() {Spielmenu
     header();
     printf("1)Spielen\n2)Namen speichern\n3)Namen laden\n4)Neue Namen festlegen\n5)Beenden\nBitte geben Sie die gewuenschte Option ein: ");
 }
-void name() {
+void name() {Namenabfrage
     header();
     printf("Spieler1, bitte geben Sie Ihren Namen ein: ");
     gets(nickname1);
@@ -95,15 +89,15 @@ void maingame(int* option) {
 	char temp[20], tempposition;
 	int counter = 0, player = 0, position = 0, tempoption = 0;
 	fill();
-	if (nickname1[1] == '\0' && nickname2[1] == '\0')
+	if (nickname1[1] == '\0' && nickname2[1] == '\0') //Nickname neu einlesen, falls kein Spielstand geladen wurde 
 	{
 		name();
 	}
 	win = 0;
-	while (win < 1 && counter < 10) {
+	while (win < 1 && counter < 10) { 
 		header();
 		print();
-		if (counter % 2 == 0) {
+		if (counter % 2 == 0) { //Spielerwechsel
 			memcpy(temp, nickname1, sizeof(nickname1));
 			printf("\n==============================\n");
 			printf(YELLOW "%s bitte geben Sie das Feld(1-9) ein, auf das Sie [O] setzen moechten : ", nickname1);
@@ -119,7 +113,7 @@ void maingame(int* option) {
 		}
 		scanf("%d%c", &position, &puffer);
 		tempposition = position + '0';
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 3; i++) //Spielerzeichen setzen
 		{
 			for (int k = 0; k < 3; k++)
 			{
@@ -142,7 +136,7 @@ void maingame(int* option) {
 	if (counter == 9) {
 		printf("\nUNENTSCHIEDEN!");
 	}
-	if (win > 0) {
+	if (win > 0) {//winning screen
 		header();
 		print();
 		printf(GREEN);
