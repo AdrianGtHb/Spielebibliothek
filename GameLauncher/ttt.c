@@ -94,7 +94,7 @@ void maingame(int* option) {
 		name();
 	}
 	win = 0;
-	while (win < 1 && counter < 10) { 
+	while (win < 1 && counter < 9) { 
 		header();
 		print();
 		if (counter % 2 == 0) { //Spielerwechsel
@@ -142,6 +142,7 @@ void maingame(int* option) {
 	}
 
 	if (counter == 9) {
+		print();
 		printf("\nUNENTSCHIEDEN!");
 	}
 	if (win > 0) {//winning screen
@@ -150,9 +151,9 @@ void maingame(int* option) {
 		printf(GREEN);
 		print_image("winner.txt");
 		printf(RESETCOLOR);
-
+		printf("%s, Sie haben nach %d Zuegen gewonnen!", temp, counter);
 	}
-	printf("%s, Sie haben nach %d Zuegen gewonnen!\n\n1)Nochmal spielen\n2)Zurueck zum TicTacToe Menu\nBitte geben Sie die gewuenschte Option ein: ", temp, counter);
+	printf("\n\n1)Nochmal spielen\n2)Zurueck zum TicTacToe Menu\nBitte geben Sie die gewuenschte Option ein: ");
 	scanf("%d%c", &tempoption, &puffer);
 	*option = tempoption;
 	system("cls");
