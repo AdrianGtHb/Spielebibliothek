@@ -3,6 +3,7 @@
 #include <stdlib.h>
 //#include<Windows.h>
 
+#define RED     "\x1b[31m"
 #define GREEN   "\x1b[32m"
 #define YELLOW  "\x1b[33m"
 #define CYAN    "\x1b[36m"
@@ -73,11 +74,11 @@ void header() {//Header fuer das Spiel
     printf("=========================================================\n\n");
     printf(RESETCOLOR);
 }
-void menu() {Spielmenu
+void menu() {//Spielmenu
     header();
     printf("1)Spielen\n2)Namen speichern\n3)Namen laden\n4)Neue Namen festlegen\n5)Beenden\nBitte geben Sie die gewuenschte Option ein: ");
 }
-void name() {Namenabfrage
+void name() {//Namenabfrage
     header();
     printf("Spieler1, bitte geben Sie Ihren Namen ein: ");
     gets(nickname1);
@@ -86,8 +87,8 @@ void name() {Namenabfrage
     system("cls");
 }
 void maingame(int* option) {
-	char temp[20], tempposition;
-	int counter = 0, player = 0, position = 0, tempoption = 0;
+	char temp[20];
+	int counter = 0, player = 0, tempoption = 0, tempposition=0;
 	fill();
 	if (nickname1[1] == '\0' && nickname2[1] == '\0') //Nickname neu einlesen, falls kein Spielstand geladen wurde 
 	{
@@ -111,28 +112,36 @@ void maingame(int* option) {
 			printf(RESETCOLOR);
 			player = 2;
 		}
-		scanf("%d%c", &position, &puffer);
-		tempposition = position + '0';
-		for (int i = 0; i < 3; i++) //Spielerzeichen setzen
-		{
-			for (int k = 0; k < 3; k++)
+		scanf("%d%c", &tempposition, &puffer);
+		tempposition = tempposition+48;
+		if (49 <= tempposition&&tempposition <= 58) {
+			for (int i = 0; i < 3; i++) //Spielerzeichen setzen
 			{
-				if (field[i][k] == tempposition && player == 1) {
-					field[i][k] = 'O';
-					counter++;
-				}
-				if (field[i][k] == tempposition && player == 2) {
-					field[i][k] = 'X';
-					counter++;
-				}
-				if (counter > 4)
+				for (int k = 0; k < 3; k++)
 				{
-					winning();
+					if (field[i][k] == tempposition && player == 1) {
+						field[i][k] = 'O';
+						counter++;
+					}
+					if (field[i][k] == tempposition && player == 2) {
+						field[i][k] = 'X';
+						counter++;
+					}
+					
+					if (counter > 4)
+					{
+						winning();
+					}
 				}
 			}
 		}
+		else {
+			printf(RED	"\nUngueltige Eingabe!"	RESETCOLOR);
+			getchar();
+		}
 		system("cls");
 	}
+
 	if (counter == 9) {
 		printf("\nUNENTSCHIEDEN!");
 	}
