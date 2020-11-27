@@ -12,10 +12,6 @@
 char field[3][3], nickname1[20], nickname2[20], puffer;
 int win = 0;
 
-void clear() {
-    getchar();
-    system("cls");
-}
 void fill() {
     int h = 49;
     for (int i = 0; i < 3; i++)
