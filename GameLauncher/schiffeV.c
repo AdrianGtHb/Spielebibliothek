@@ -12,6 +12,7 @@ char puffer;
 
 #define RED     "\x1b[31m"
 #define YELLOW  "\x1b[33m"
+#define CYAN    "\x1b[36m"
 #define RESETCOLOUR   "\x1b[0m"
 
 void createGame()
@@ -21,7 +22,7 @@ void createGame()
 
 	for (int i = 3; i < 13; i++)
 	{
-		for (int k = 2; k < 23; k += 2)
+		for (int k = 2; k < 23; k += 2)		//Füllen der Felder mit '~'
 		{
 			Feld1[i][k] = '~';
 			Feld2[i][k] = '~';
@@ -35,7 +36,7 @@ void createGame()
 
 	for (int i = 3; i < 13; i++)
 	{
-		for (int k = 1; k < 23; k += 2)
+		for (int k = 1; k < 23; k += 2)		//Füllen der Felder mit '~'
 		{
 			Feld1[i][k] = '|';
 			Feld2[i][k] = '|';
@@ -47,7 +48,7 @@ void createGame()
 		}
 	}
 	int y = 48;
-	for (int i = 2; i < 21; i += 2)
+	for (int i = 2; i < 21; i += 2)		//Füllen der Felder mit 0 - 9
 	{
 		Feld1[2][i] = y;
 		Feld1[13][i] = y;
@@ -65,7 +66,7 @@ void createGame()
 		y++;
 	}
 	y = 65;
-	for (int i = 3; i < 13; i++)
+	for (int i = 3; i < 13; i++)		//Füllen der Felder mit 'A - J'
 	{
 		Feld1[i][0] = y;
 		Feld1[i][22] = y;
@@ -81,9 +82,11 @@ void createGame()
 
 void showGame()
 {
+	printf(CYAN);
 	print_image("shipimage.txt");
+	printf(RESETCOLOUR);
 	printf("\n\n");
-	if (gamePlayer == 0)
+	if (gamePlayer == 0)		//Anzeige für Spieler 1
 	{
 		for (int i = 0; i < 14; i++)
 		{
@@ -111,7 +114,7 @@ void showGame()
 			printf("\n");
 		}
 	}
-	else if (gamePlayer == 1)
+	else if (gamePlayer == 1)		//Anzeige für Spieler 2
 	{
 		for (int i = 0; i < 14; i++)
 		{
@@ -141,7 +144,7 @@ void showGame()
 	}
 }
 
-void pchanger()
+void pchanger()		//Spielerwechsel
 {
 	gameFlipper++;
 	if (gameFlipper % 2 == 0)
@@ -163,14 +166,14 @@ void shipinput()
 	int ausrichtung = 0;
 	int size = 0;
 	char c_laenge = 'Q';
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 2; i++)		//Befüllung des Arrays um die Verbleibenden Schiffe zu tracken
 	{
 		for (int k = 0; k < 4; k++)
 		{
 			Schiffe[i][k] = k + 1;
 		}
 	}
-	while (!(Schiffe[gamePlayer][0] == 0 && Schiffe[gamePlayer][1] == 0 && Schiffe[gamePlayer][2] == 0 && Schiffe[gamePlayer][3] == 0))
+	while (!(Schiffe[gamePlayer][0] == 0 && Schiffe[gamePlayer][1] == 0 && Schiffe[gamePlayer][2] == 0 && Schiffe[gamePlayer][3] == 0))		//Abfrage ob alle Schiffe gesetzt wurden
 	{
 		int nogo = 0;
 		int constraint = 0;
@@ -182,7 +185,7 @@ void shipinput()
 			printf("\n1)Schlachtschiff, 5 K\x084stchen (x%d)\n2)Kreuzer, 4 K\x084stchen (x%d)\n3)Zerst\x094rer, 3 K\x084stchen (x%d)\n4)U-Boot, 2 K\x084stchen (x%d)\n", Schiffe[gamePlayer][0], Schiffe[gamePlayer][1], Schiffe[gamePlayer][2], Schiffe[gamePlayer][3]);
 			printf("W\x084hlen Sie ein Schiff, dass Sie stationieren m\x094\chten!\nEingabe: ");
 			scanf("%d%c", &input, &puffer);
-			if (Schiffe[gamePlayer][input - 1] == 0)
+			if (Schiffe[gamePlayer][input - 1] == 0)		//Abfrage ob von einer Art Schiff schon alle gestzt wurden
 			{
 				printf(RED);
 				printf("\nAchtung! Von dieser Art Schiff haben Sie keins mehr! W\x084hlen sie ein anderes!<ENTER>");
@@ -205,7 +208,7 @@ void shipinput()
 		system("cls");
 		showGame();
 
-		if (c_laenge == 'a' || c_laenge == 'A')
+		if (c_laenge == 'a' || c_laenge == 'A')		//Umwandlung von a - j in 0 - 9
 			laenge = 0;
 		else if (c_laenge == 'b' || c_laenge == 'B')
 			laenge = 1;
@@ -230,7 +233,7 @@ void shipinput()
 		scanf("%d%c", &ausrichtung, &puffer);
 
 
-		switch (input)
+		switch (input)		//Länge des eingegebenen Schiffes
 		{
 		case 1:
 			size = 5;
@@ -247,10 +250,11 @@ void shipinput()
 		default:
 			break;
 		}
+		//Test ob Schiff an der Stelle gesetzt werden darf
 
-		if (gamePlayer == 0)
+		if (gamePlayer == 0)		//Spieler 1
 		{
-			if (ausrichtung == 1)
+			if (ausrichtung == 1)		
 			{
 				for (int i = 0; i < size; i++)
 				{
@@ -315,7 +319,7 @@ void shipinput()
 		}
 
 
-		if (gamePlayer == 1)
+		if (gamePlayer == 1)		//Spieler 2
 		{
 			if (ausrichtung == 1)
 			{
@@ -385,6 +389,7 @@ void shipinput()
 
 void sieg()
 {
+	//Sind alle Schiffe einer Seite zerstört?
 	beenden = 1;
 	if (gamePlayer == 0)
 		for (int k = 3; k < 13; k++)
@@ -413,8 +418,7 @@ void sieg()
 void schuss()
 {
 	system("cls");
-	printf("SPIELERWECHSEL!");
-	getchar();
+	
 	int sBreite = 0;
 	int sLaenge = 0;
 	int fehlversuch = 0;
@@ -469,7 +473,7 @@ void schuss()
 
 				switch (direction)
 				{
-				case 1:
+				case 1:		//Horizontal
 					for (int i = 2; Feld2[sLaenge + 3][(sBreite * 2) + 2 * i] == 'X'; i++) //zeigt auf eins nach rechts, wenn laenge 1 ist, dann zeigt es auf 2 und geht immer weiter bis es kein X mehr ist
 					{
 						countersize++;
@@ -485,7 +489,7 @@ void schuss()
 					if (Feld2[sLaenge + 3][(sBreite * 2) + 4] == '#' || Feld2[sLaenge + 3][(sBreite * 2)] == '#')
 						countersize = 0;
 					break;
-				case 2:
+				case 2:		//Vertikal
 					for (int i = 0; Feld2[sLaenge + 2 - i][(sBreite * 2) + 2] == 'X'; i++)
 					{
 						countersize++;
@@ -509,7 +513,7 @@ void schuss()
 				system("cls");
 				showGame();
 				printf(YELLOW);
-				if (countersize == 5)
+				if (countersize == 5)		//Welche Art Schiff wurde zerstört?
 					printf("\nSie haben das gegnerische Schlachtschiff zerst\x094rt! Weiter so!\n");
 				if (countersize == 4)
 					printf("\nSie haben einen gegnerischen Kreuzer zerst\x094rt! Gute Arbeit!\n");
@@ -677,31 +681,192 @@ void schuss()
 	sieg();
 }
 
+void gameSpeichern() {
+	const char DATEINAMEP1[] = "schiffeVP1.data";
+	const char DATEINAMEP2[] = "schiffeVP2.data";
+	const char DATEINAMETP[] = "playerTurn.txt";
 
+	FILE* meineDatei1 = fopen(DATEINAMEP1, "wb");
+
+	if (meineDatei1 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMEP1);
+		fclose(meineDatei1);
+		return;
+	}
+
+	fwrite(Feld1, sizeof(char), sizeof(Feld1), meineDatei1);
+	fclose(meineDatei1);
+
+	FILE* meineDatei2 = fopen(DATEINAMEP2, "wb");
+
+	if (meineDatei2 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMEP2);
+		fclose(meineDatei2);
+		return;
+	}
+
+	fwrite(Feld2, sizeof(char), sizeof(Feld2), meineDatei2);
+	fclose(meineDatei2);
+
+	FILE* meineDatei3 = fopen(DATEINAMETP, "w+");
+	if (meineDatei3 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMETP);
+		fclose(meineDatei3);
+		return;
+	}
+	gameFlipper--;
+	fprintf(meineDatei3, "%d", gameFlipper);
+	fclose(meineDatei3);
+
+	printf("\nSpiel wurde gespeichert!\n");
+}
+
+void spielladen() {
+	const char DATEINAMEP1[] = "schiffeVP1.data";
+	const char DATEINAMEP2[] = "schiffeVP2.data";
+	const char DATEINAMETP[] = "playerTurn.txt";
+
+	FILE* meineDatei1 = fopen(DATEINAMEP1, "rb");
+
+	if (meineDatei1 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMEP1);
+		fclose(meineDatei1);
+		return;
+	}
+
+	fread(Feld1, sizeof(char), sizeof(Feld1), meineDatei1);
+	fclose(meineDatei1);
+
+	FILE* meineDatei2 = fopen(DATEINAMEP2, "rb");
+
+	if (meineDatei2 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMEP2);
+		fclose(meineDatei2);
+		return;
+	}
+
+	fread(Feld2, sizeof(char), sizeof(Feld2), meineDatei2);
+	fclose(meineDatei2);
+
+	FILE* meineDatei3 = fopen(DATEINAMETP, "r");
+	if (meineDatei3 == NULL) {
+		printf("Datei %s konnte nicht geoeffnet werden!", DATEINAMETP);
+		fclose(meineDatei3);
+		return;
+	}
+	char buffer[80];
+	fgets(buffer, 80, meineDatei3);
+
+	gameFlipper = atoi(buffer);
+
+	printf("\n\nSpiel wurde geladen!\n");
+
+}
 
 void gameSchiffeVersenken()
 {
-	system("cls");
-	createGame();
-	pchanger();
-	shipinput();
-	system("cls");
-	showGame();
-	printf("\nSPIELERWECHSEL...");
-	getchar();
-	system("cls");
-	printf("\nSPIELERWECHSEL...");
-	getchar();
-	pchanger();
-	shipinput();
-	system("cls");
-	showGame();
-	printf("\nSPIELERWECHSEL...");
-	getchar();
+	int auswahl = 0;
+	
 
-	while (beenden == 0)
-	{
-		pchanger();
-		schuss();
-	}
+	do {
+		int auswahlGame = 0;
+		beenden = 0;
+		system("cls");
+		printf(CYAN);
+		print_image("shipimage.txt");
+		printf(RESETCOLOUR);
+		printf("\nMen\x081:\n1)Spielen\n2)Spiel laden\n3)Beenden\nEingabe: ");
+		scanf("%d%c", &auswahl, &puffer);
+
+		switch (auswahl) {
+		case 1:
+			system("cls");
+			createGame();
+			pchanger();
+			shipinput();
+			system("cls");
+			showGame();
+			printf("\nSPIELERWECHSEL...");
+			getchar();
+			system("cls");
+			printf("\nSPIELERWECHSEL...");
+			getchar();
+			pchanger();
+			shipinput();
+			system("cls");
+			showGame();
+			printf("\nSPIELERWECHSEL...");
+			getchar();
+
+			while (beenden == 0)
+			{
+				
+
+				system("cls");
+				printf("SPIELERWECHSEL!");
+				getchar();
+				system("cls");
+				printf("Men\x081:\n1)Schuss\n2)Speichern\n3)Beenden\nEingabe: ");
+				scanf("%d%c", &auswahlGame, &puffer);
+
+				switch (auswahlGame) {
+				case 1:
+					schuss();
+					break;
+				case 2:
+					gameSpeichern();
+					getchar();
+					beenden++;
+					break;
+				case 3:
+					printf("-- Spiel wurde beendet! --");
+					getchar();
+					beenden++;
+					break;
+				default:
+					printf("Falsche Eingabe!");
+					break;
+				}
+			}
+			break;
+		case 2:
+			spielladen();
+
+			while (beenden == 0)
+			{
+				pchanger();
+				printf("SPIELERWECHSEL!");
+				getchar();
+
+				system("cls");
+				printf("Men\x081:\n1)Schuss\n2)Speichern\n3)Beenden\nEingabe: ");
+				scanf("%d%c", &auswahlGame, &puffer);
+
+				switch (auswahlGame) {
+				case 1:
+					schuss();
+					break;
+				case 2:
+					gameSpeichern();
+					getchar();
+					beenden++;
+					break;
+				case 3:
+					printf("-- Spiel wurde beendet! --");
+					getchar();
+					beenden++;
+					break;
+				default:
+					printf("Falsche Eingabe!");
+					break;
+				}
+			}
+
+			break;
+		case 3:
+			printf("\n-- Ende --");
+			break;
+		}
+
+	} while (auswahl < 3);
 }
