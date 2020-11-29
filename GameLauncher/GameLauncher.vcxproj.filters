@@ -27,6 +27,9 @@
     <ClCompile Include="schiffeV.c">
       <Filter>Ressourcendateien</Filter>
     </ClCompile>
+    <ClCompile Include="tetris.c">
+      <Filter>Ressourcendateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ttt.h">
@@ -36,6 +39,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="schiffeV.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="schiffeV.c" />
+    <ClCompile Include="tetris.c" />
     <ClCompile Include="ttt.c" />
     <ClCompile Include="vg.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="schiffeV.h" />
+    <ClInclude Include="tetris.h" />
     <ClInclude Include="ttt.h" />
     <ClInclude Include="vg.h" />
   </ItemGroup>

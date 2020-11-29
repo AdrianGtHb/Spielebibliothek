@@ -6,6 +6,7 @@
 #include "ttt.h"
 #include "vg.h"
 #include "schiffeV.h"
+#include "tetris.h"
 
 #define MAX_LEN 128
 
@@ -28,7 +29,8 @@ int main(void)
 		printf("[1] Tic-Tac-Toe\n");
 		printf("[2] Vier gewinnt\n");
 		printf("[3] Schiffe versenken\n");
-		printf("[4] Beenden\n\n");
+		printf("[4] Tetris\n");
+		printf("[5] Beenden\n\n");
 		printf("Eingabe: ");
 		scanf("%d%c", &auswahl, &puffer);
 		
@@ -43,6 +45,9 @@ int main(void)
 			gameSchiffeVersenken();
 			break;
 		case 4:
+			startTetris();
+			break;
+		case 5:
 			printf("\n--- Ende ---");
 			break;
 		default:
@@ -50,7 +55,7 @@ int main(void)
 			auswahl = 0;
 			break;
 		}
-	} while (auswahl < 4);
+	} while (auswahl < 5);
 
 
 	return 0;
