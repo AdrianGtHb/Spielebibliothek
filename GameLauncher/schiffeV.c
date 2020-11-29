@@ -801,7 +801,7 @@ void gameSchiffeVersenken()
 			while (beenden == 0)
 			{
 				
-
+				pchanger();
 				system("cls");
 				printf("SPIELERWECHSEL!");
 				getchar();
