@@ -19,7 +19,7 @@ int main(void)
 {
 	int auswahl = 0;
 	char puffer;
-	
+	 
 	do {
 		system("cls");
 		printf(YELLOW);
